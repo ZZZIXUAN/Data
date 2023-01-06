@@ -10,6 +10,7 @@ STOPS = {
     "Rennes": "87471003",
 }
 
+
 @click.command()
 @click.option('--token')
 @click.option('--date', type=click.DateTime(formats=["%Y-%m-%d"]))
@@ -48,12 +49,13 @@ def run(token, date, ville):
     ]
 
     trains[columns].astype(str).to_gbq(
-        'zixuan.trains',
+        'christophe.trains',
         project_id='ensai-2023-373710',
         location='eu',
         credentials=credentials,
         if_exists='replace',
     )
+
 
 if __name__ == '__main__':
     run()
